@@ -4,3 +4,12 @@
 body {
     background-color: #e9f7e9;
 }
+
+.header-bg {
+  background-image: url("../assets-imagem/mesas_sede.png");
+}
+.header-bg {
+  background-image: url("../assets-imagem/mesas_sede.png");
+  background-size: cover;
+  background-position: center;
+}
