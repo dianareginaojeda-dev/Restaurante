@@ -63,7 +63,7 @@ function addToCart(name, price) {
   updateCartMotal();
 }
 // atualizar o modal do carrinho
-function updateCartMotal() {
+function updateCartModal() {
   cartItemConteiner.innerHTML = "";
   let total = 0;
   cart.forEach(item => {
@@ -251,8 +251,17 @@ ${cartItems}
 
   window.open(`https://wa.me/${phone}?text=${mensagem}`, "_blank");
 
+    
   cart = [];
   updateCartModal();
+   
+    limparCampos();
+     atualizarCarrinho();
+    cartModal.classList.add("hidden");
+    //cartTotal.innerHTML = "0.00";
+//cartItemConteiner.innerHTML = "";
+//document.getElementById("cart-count").innerText = "0";
+
 });
 
 document.querySelectorAll('.zoom-container').forEach(container => {
@@ -272,3 +281,11 @@ document.querySelectorAll('.zoom-container').forEach(container => {
     img.style.transform = 'scale(1)';
   });
 });
+
+//Limpar resposta enviada no carrinho
+function limparCampos() {
+  document.getElementById("address").value = "";
+  document.getElementById("addressSetor").value = "";
+  document.getElementById("addressbloco").value = "";
+  document.getElementById("addresshorario").value = "";
+}
