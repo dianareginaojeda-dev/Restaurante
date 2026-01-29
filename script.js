@@ -258,7 +258,7 @@ ${cartItems}
   updateCartModal();
   limparCampos();
   cartModal.classList.add("hidden");
-    //cartTotal.innerHTML = "0.00";
+    cartTotal.innerHTML = "0.00";
 cartItemConteiner.innerHTML = "";
 //document.getElementById("cart-count").innerText = "0";
 
