@@ -173,13 +173,14 @@ function formatarDataHora() {
 
 function checkRestaurantOpen() {
   const agora = new Date();
-  const hora = Number(agora.toLocaleString("pt-BR", {
-    timeZone: "America/Campo_Grande",
-    hour: "2-digit",
-    hour12: false
-  }));
+  const hora = agora.getHours();
+  const minuto = agora.getMinutes();
+    const campoGrande = new Date(utc + (3600000 * -4));
 
-  return hora >= 8 && hora < 16;
+  return (
+    (hora > 11 || (hora === 11 && minuto >= 0)) &&
+    (hora < 13 || (hora === 13 && minuto <= 30))
+  );
 }
 
 checkoutBtn.addEventListener("click", function () {
