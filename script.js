@@ -260,7 +260,7 @@ ${cartItems}
   cartModal.classList.add("hidden");
     //cartTotal.innerHTML = "0.00";
 cartItemConteiner.innerHTML = "";
-document.getElementById("cart-count").innerText = "0";
+//document.getElementById("cart-count").innerText = "0";
 
 Toastify({
     text: "✅ Pedido enviado com sucesso!",
