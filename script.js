@@ -178,8 +178,7 @@ function checkRestaurantOpen() {
 
 
   return (
-    (hora > 11 || (hora === 11 && minuto >= 0)) &&
-    (hora < 13 || (hora === 13 && minuto <= 30))
+    hora >= 11 && hora < 14;
   );
 }
 
