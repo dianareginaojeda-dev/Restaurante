@@ -15,6 +15,37 @@ const addresswharn = document.getElementById("address-warn")
 const addresswharnSetor = document.getElementById("address-warn-setor")
 const addresswharnBloco = document.getElementById("address-warn-bloco")
 const addresswharnhorario = document.getElementById("address-warn-horario")
+// MENU OPCIONAL
+const customModal = document.getElementById("custom-modal");
+const extrasBox = document.getElementById("extras-box");
+const removeBox = document.getElementById("remove-box");
+const modalTotal = document.getElementById("modal-total");
+const modalTitle = document.getElementById("modal-title");
+const confirmCustom = document.getElementById("confirm-custom");
+const cancelCustom = document.getElementById("cancel-custom");
+
+let produtoAtual = "";
+let precoBase = 0;
+//////
+
+// ADICIONAR PRODUTO EXTRA
+const adicionais = [
+  { name: "Bife extra", price: 6 },
+  { name: "Batata frita", price: 4 },
+  { name: "Ovo frito", price: 3 },
+  { name: "Bacon", price: 5 }
+];
+
+const retirar = [
+  "Arroz",
+  "Feijão",
+  "Salada",
+  "Farofa",
+  "Molho"
+];
+
+//FIM DE ADICIONAR PRODUTO EXTRA
+
 
 let cart = []
 // abrir menu carrinho
@@ -42,6 +73,18 @@ menu.addEventListener("click", function(event){
     //adicionar no carrinho
     addToCart(name, price)
     }
+
+// MENU DE OPÇÃO 
+    menu.addEventListener("click", function(event) {
+  const btn = event.target.closest(".open-custom-btn");
+  if (!btn) return;
+
+  produtoAtual = btn.dataset.name;
+  precoBase = parseFloat(btn.dataset.price);
+
+  abrirModalPersonalizacao();
+});
+
     
 })
 //função para adicionar no carrinho
