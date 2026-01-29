@@ -256,8 +256,8 @@ ${cartItems}
 // LIMPEZA FINAL
   cart = [];
   updateCartModal();
- // limparCampos();
- // cartModal.classList.add("hidden");
+    limparCampos();
+cartModal.classList.add("hidden");
    // cartModal.style.display = "none";
     //cartTotal.innerHTML = "0.00";
 //cartItemConteiner.innerHTML = "";
@@ -293,8 +293,14 @@ document.querySelectorAll('.zoom-container').forEach(container => {
 
 //Limpar resposta enviada no carrinho
 function limparCampos() {
-  document.getElementById("address").value = "";
-  document.getElementById("addressSetor").value = "";
-  document.getElementById("addressbloco").value = "";
-  document.getElementById("addresshorario").value = "";
+  addressInput.value = "";
+  addressSetorInput.value = "";
+  addressBlocoInput.value = "";
+  addressHorarioInput.value = "";
+
+  addressInput.classList.remove("border-red-500");
+  addressSetorInput.classList.remove("border-red-500");
+  addressBlocoInput.classList.remove("border-red-500");
+  addressHorarioInput.classList.remove("border-red-500");
 }
+
