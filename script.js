@@ -175,7 +175,7 @@ function checkRestaurantOpen() {
   const agora = new Date();
   const hora = agora.getHours();
   const minuto = agora.getMinutes();
-    const campoGrande = new Date(utc + (3600000 * -4));
+
 
   return (
     (hora > 11 || (hora === 11 && minuto >= 0)) &&
