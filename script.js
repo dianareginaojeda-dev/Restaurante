@@ -60,7 +60,7 @@ function addToCart(name, price) {
     });
   }
 
-  updateCartMotal();
+  updateCartModal();
 }
 // atualizar o modal do carrinho
 function updateCartModal() {
@@ -113,11 +113,11 @@ function removeItemCart(name){
 
      if(item.quantity > 1){
         item.quantity -= 1;
-        updateCartMotal();
+        updateCartModal();
         return;
     }
       cart.splice(index, 1);
-       updateCartMotal();
+       updateCartModal();
     }}
 // NOME
 addressInput.addEventListener("input", function(event){
