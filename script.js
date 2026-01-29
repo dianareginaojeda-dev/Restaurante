@@ -176,11 +176,12 @@ function checkRestaurantOpen() {
   const hora = agora.getHours();
   const minuto = agora.getMinutes();
 
-
   return (
-    hora >= 11 && hora < 14;
+    (hora > 11 || (hora === 11 && minuto >= 0)) &&
+    (hora < 14 || (hora === 14 && minuto === 0))
   );
 }
+
 
 checkoutBtn.addEventListener("click", function () {
 
@@ -256,9 +257,10 @@ ${cartItems}
   cart = [];
   updateCartModal();
   limparCampos();
-  cartModal.classList.add("hidden");
-    cartTotal.innerHTML = "0.00";
-cartItemConteiner.innerHTML = "";
+ // cartModal.classList.add("hidden");
+    cartModal.style.display = "none";
+    //cartTotal.innerHTML = "0.00";
+//cartItemConteiner.innerHTML = "";
 //document.getElementById("cart-count").innerText = "0";
 
 Toastify({
