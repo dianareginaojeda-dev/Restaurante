@@ -62,33 +62,35 @@ cartModal.addEventListener("click", function(event){
 closeModalBtn.addEventListener("click", function(){
     cartModal.style.display = "none"
 })
-menu.addEventListener("click", function(event){
-    // console.log(event.target)
-    let parentButton = event.target.closest(".add-to-cart-btn")
 
-    if(parentButton){
-    const name = parentButton.getAttribute("data-name")
-    const price = parseFloat(parentButton.getAttribute("data-price"))
+// MENU
+menu.addEventListener("click", function(event) {
 
-    //adicionar no carrinho
-    addToCart(name, price)
-    }
+  // 👉 Clique em marmitex (abre modal)
+  const customBtn = event.target.closest(".open-custom-btn");
+  if (customBtn) {
+    event.stopPropagation();
 
-// MENU DE OPÇÃO 
-    menu.addEventListener("click", function(event) {
-  const btn = event.target.closest(".open-custom-btn");
-  if (!btn) return;
+    produtoAtual = customBtn.dataset.name;
+    precoBase = parseFloat(customBtn.dataset.price);
 
-  event.stopPropagation();
-      
-  produtoAtual = btn.dataset.name;
-  precoBase = parseFloat(btn.dataset.price);
+    abrirModalPersonalizacao();
+    return;
+  }
 
-  abrirModalPersonalizacao();
+  // 👉 Clique em produto normal (adiciona direto)
+  const parentButton = event.target.closest(".add-to-cart-btn");
+  if (parentButton) {
+    const name = parentButton.getAttribute("data-name");
+    const price = parseFloat(parentButton.getAttribute("data-price"));
+
+    addToCart(name, price);
+  }
+
 });
 
-    
-})
+
+
 //função para adicionar no carrinho
 function addToCart(name, price) {
   const existingItem = cart.find(
