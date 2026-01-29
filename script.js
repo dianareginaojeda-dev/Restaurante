@@ -183,7 +183,7 @@ function checkRestaurantOpen() {
 }
 
 checkoutBtn.addEventListener("click", function () {
-alert("BOTÃO CLICADO");
+
   if (!checkRestaurantOpen()) {
     Toastify({
       text: "🔴 Restaurante fechado! Atendimento das 08:00 às 16:00.",
