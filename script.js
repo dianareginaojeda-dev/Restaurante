@@ -256,9 +256,9 @@ ${cartItems}
 // LIMPEZA FINAL
   cart = [];
   updateCartModal();
-  limparCampos();
+ // limparCampos();
  // cartModal.classList.add("hidden");
-    cartModal.style.display = "none";
+   // cartModal.style.display = "none";
     //cartTotal.innerHTML = "0.00";
 //cartItemConteiner.innerHTML = "";
 //document.getElementById("cart-count").innerText = "0";
