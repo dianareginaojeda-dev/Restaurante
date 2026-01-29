@@ -79,6 +79,8 @@ menu.addEventListener("click", function(event){
   const btn = event.target.closest(".open-custom-btn");
   if (!btn) return;
 
+  event.stopPropagation();
+      
   produtoAtual = btn.dataset.name;
   precoBase = parseFloat(btn.dataset.price);
 
