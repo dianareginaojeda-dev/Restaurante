@@ -252,15 +252,22 @@ ${cartItems}
   window.open(`https://wa.me/${phone}?text=${mensagem}`, "_blank");
 
     
+// LIMPEZA FINAL
   cart = [];
   updateCartModal();
-   
-    limparCampos();
-     atualizarCarrinho();
-    cartModal.classList.add("hidden");
+  limparCampos();
+  cartModal.classList.add("hidden");
     //cartTotal.innerHTML = "0.00";
 //cartItemConteiner.innerHTML = "";
 //document.getElementById("cart-count").innerText = "0";
+
+Toastify({
+    text: "✅ Pedido enviado com sucesso!",
+    duration: 3000,
+    gravity: "top",
+    position: "right",
+    style: { background: "#22c55e" }
+  }).showToast();
 
 });
 
