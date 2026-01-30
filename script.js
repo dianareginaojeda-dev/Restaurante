@@ -161,22 +161,19 @@ function abrirModalPersonalizacao() {
 
 
 // MENU
-menu.addEventListener("click", function (e) {
-  const btn = e.target.closest("button");
-  if (!btn) return;
+menu.addEventListener("click", function(event){
+    // console.log(event.target)
+    let parentButton = event.target.closest(".add-to-cart-btn")
 
-  if (btn.classList.contains("open-custom-btn")) {
-    produtoAtual = btn.dataset.name;
-    precoBase = parseFloat(btn.dataset.price);
-    abrirModalPersonalizacao();
-    return;
-  }
+    if(parentButton){
+    const name = parentButton.getAttribute("data-name")
+    const price = parseFloat(parentButton.getAttribute("data-price"))
 
-  if (btn.classList.contains("add-to-cart-btn")) {
-    addToCart(btn.dataset.name, parseFloat(btn.dataset.price));
-  }
-});
-
+    //adicionar no carrinho
+    addToCart(name, price)
+    }
+    
+})
 
 
 
