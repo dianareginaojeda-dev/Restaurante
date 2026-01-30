@@ -118,27 +118,46 @@ function abrirModalPersonalizacao() {
 
 
 // MENU
-menu.addEventListener("click", function (e) {
+document.addEventListener("DOMContentLoaded", function () {
 
-  const btnCustom = e.target.closest(".open-custom-btn");
-  const btnAdd = e.target.closest(".add-to-cart-btn");
+  console.log("JS NOVO CARREGADO");
 
-  // PRODUTOS COM PERSONALIZAÇÃO
-  if (btnCustom) {
-    produtoAtual = btnCustom.dataset.name;
-    precoBase = parseFloat(btnCustom.dataset.price);
-    abrirModalPersonalizacao();
-    return;
-  }
+  const menu = document.getElementById("menu");
+  const customModal = document.getElementById("custom-modal");
 
-  // PRODUTOS SEM PERSONALIZAÇÃO
-  if (btnAdd) {
-    const name = btnAdd.dataset.name;
-    const price = parseFloat(btnAdd.dataset.price);
-    addToCart(name, price);
-  }
+  console.log("MENU:", menu);
+  console.log("MODAL:", customModal);
+
+  if (!menu || !customModal) return;
+
+  menu.addEventListener("click", function (e) {
+
+    const btnCustom = e.target.closest(".open-custom-btn");
+    const btnAdd = e.target.closest(".add-to-cart-btn");
+
+    if (btnCustom) {
+      console.log("MARMITEX DETECTADO");
+
+      produtoAtual = btnCustom.dataset.name;
+      precoBase = parseFloat(btnCustom.dataset.price);
+
+      abrirModalPersonalizacao();
+      return;
+    }
+
+    if (btnAdd) {
+      console.log("ADD DIRETO");
+
+      const name = btnAdd.dataset.name;
+      const price = parseFloat(btnAdd.dataset.price);
+
+      addToCart(name, price);
+    }
+
+  });
 
 });
+
 
 
 
