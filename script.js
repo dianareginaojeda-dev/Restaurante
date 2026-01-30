@@ -62,7 +62,10 @@ cartModal.addEventListener("click", function(event){
 })
 // fechar menu carrinho quando clicar no botão de fechar
 closeModalBtn.addEventListener("click", function(){
-    cartModal.style.display = "none"
+    //cartModal.style.display = "none"
+  customModal.classList.add("hidden");
+customModal.classList.remove("flex");
+
 })
 
 // MENU PERSONALIZADO 
@@ -105,7 +108,10 @@ function abrirModalPersonalizacao() {
     currency: "BRL"
   });
 
+  //customModal.classList.remove("hidden");
   customModal.classList.remove("hidden");
+customModal.classList.add("flex");
+
 }
 
 
@@ -136,6 +142,7 @@ document.addEventListener("click", function (e) {
 cancelCustom.addEventListener("click", () => {
   //customModal.classList.add("hidden");
   customModal.style.display = "none";
+ 
 });
 
 // ATUALIZAR TOTAL A MARCAR EXTRAS 
