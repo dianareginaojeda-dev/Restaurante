@@ -1,3 +1,5 @@
+alert("SCRIPT.JS CARREGADO");
+
 const menu = document.getElementById("menu")
 const cartBtn = document.getElementById("cart-btn")
 const cartModal = document.getElementById("cart-modal")
