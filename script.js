@@ -503,3 +503,7 @@ function abrirDireto(btn) {
   customModal.classList.remove("hidden");
 }
 
+document.querySelectorAll("button").forEach(btn => {
+  btn.addEventListener("click", () => alert("clicou"));
+});
+
