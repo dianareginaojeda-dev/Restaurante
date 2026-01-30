@@ -111,28 +111,28 @@ function abrirModalPersonalizacao() {
 // MENU
 menu.addEventListener("click", function(event) {
 
-  // 👉 Clique em marmitex (abre modal)
-  const customBtn = event.target.closest(".open-custom-btn");
-  if (customBtn) {
-    event.stopPropagation();
+  const btn = event.target.closest("button");
 
-    produtoAtual = customBtn.dataset.name;
-    precoBase = parseFloat(customBtn.dataset.price);
+  if (!btn) return;
+
+  // 👉 Marmitex com personalização
+  if (btn.classList.contains("open-custom-btn")) {
+    produtoAtual = btn.dataset.name;
+    precoBase = parseFloat(btn.dataset.price);
 
     abrirModalPersonalizacao();
     return;
   }
 
-  // 👉 Clique em produto normal (adiciona direto)
-  const parentButton = event.target.closest(".add-to-cart-btn");
-  if (parentButton) {
-    const name = parentButton.getAttribute("data-name");
-    const price = parseFloat(parentButton.getAttribute("data-price"));
-
+  // 👉 Produto comum
+  if (btn.classList.contains("add-to-cart-btn")) {
+    const name = btn.dataset.name;
+    const price = parseFloat(btn.dataset.price);
     addToCart(name, price);
   }
 
 });
+
 
 cancelCustom.addEventListener("click", () => {
   customModal.classList.add("hidden");
