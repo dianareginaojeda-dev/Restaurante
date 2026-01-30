@@ -109,25 +109,20 @@ function abrirModalPersonalizacao() {
 
 
 // MENU
-menu.addEventListener("click", function (event) {
-  const btn = event.target.closest("button");
-
+menu.addEventListener("click", function (e) {
+  const btn = e.target.closest("button");
   if (!btn) return;
 
-  // 👉 Marmitex com personalização
   if (btn.classList.contains("open-custom-btn")) {
-    produtoAtual = btn.dataset.name;
-    precoBase = parseFloat(btn.dataset.price);
-
-    abrirModalPersonalizacao();
+    customModal.classList.remove("hidden");
     return;
   }
 
-  // 👉 Produtos normais
   if (btn.classList.contains("add-to-cart-btn")) {
     addToCart(btn.dataset.name, parseFloat(btn.dataset.price));
   }
 });
+
 
 
 
