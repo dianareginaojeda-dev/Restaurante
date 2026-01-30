@@ -437,4 +437,12 @@ function limparCampos() {
   addressBlocoInput.classList.remove("border-red-500");
   addressHorarioInput.classList.remove("border-red-500");
 }
+function abrirDireto(btn) {
+  produtoAtual = btn.dataset.name;
+  precoBase = parseFloat(btn.dataset.price);
+
+  console.log("Abrindo modal:", produtoAtual, precoBase);
+
+  customModal.classList.remove("hidden");
+}
 
