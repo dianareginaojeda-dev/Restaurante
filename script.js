@@ -219,26 +219,23 @@ function abrirModalPersonalizacao() {
 
 // MENU
 menu.addEventListener("click", function (e) {
+  const btn = e.target.closest("button");
+  if (!btn) return;
 
-  const btnCustom = e.target.closest(".open-custom-btn");
-  const btnAdd = e.target.closest(".add-to-cart-btn");
-
-  if (btnCustom) {
-    produtoAtual = btnCustom.dataset.name;
-    precoBase = parseFloat(btnCustom.dataset.price);
-
+  // PRODUTO COM PERSONALIZAÇÃO
+  if (btn.classList.contains("open-custom-btn")) {
+    produtoAtual = btn.dataset.name;
+    precoBase = parseFloat(btn.dataset.price);
     abrirModalPersonalizacao();
     return;
   }
 
-  if (btnAdd) {
-    addToCart(
-      btnAdd.dataset.name,
-      parseFloat(btnAdd.dataset.price)
-    );
+  // PRODUTO NORMAL
+  if (btn.classList.contains("add-to-cart-btn")) {
+    addToCart(btn.dataset.name, parseFloat(btn.dataset.price));
   }
-
 });
+
 
 
 
