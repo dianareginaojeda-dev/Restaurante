@@ -109,8 +109,7 @@ function abrirModalPersonalizacao() {
 
 
 // MENU
-menu.addEventListener("click", function(event) {
-
+menu.addEventListener("click", function (event) {
   const btn = event.target.closest("button");
 
   if (!btn) return;
@@ -124,14 +123,13 @@ menu.addEventListener("click", function(event) {
     return;
   }
 
-  // 👉 Produto comum
+  // 👉 Produtos normais
   if (btn.classList.contains("add-to-cart-btn")) {
-    const name = btn.dataset.name;
-    const price = parseFloat(btn.dataset.price);
-    addToCart(name, price);
+    addToCart(btn.dataset.name, parseFloat(btn.dataset.price));
   }
-
 });
+
+menu.addEventListener("click", () => alert("CLIQUE DETECTADO"));
 
 
 cancelCustom.addEventListener("click", () => {
