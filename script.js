@@ -121,9 +121,7 @@ menu.addEventListener("click", function (e) {
 
   if (btn.classList.contains("open-custom-btn")) {
     alert("MARMITEX P DETECTADO");
- // customModal.classList.remove("hidden");
     customModal.style.display = "flex";
-
     return;
   }
 
