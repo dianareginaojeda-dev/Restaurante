@@ -64,8 +64,8 @@ customModal.classList.remove("flex");
 // fechar menu carrinho quando clicar no botão de fechar
 closeModalBtn.addEventListener("click", function(){
     cartModal.style.display = "none"
-  customModal.classList.add("hidden");
-customModal.classList.remove("flex");
+ // customModal.classList.add("hidden");
+//customModal.classList.remove("flex");
 
 })
 
@@ -136,8 +136,8 @@ menu.addEventListener("click", function (e) {
 cancelCustom.addEventListener("click", () => {
  
   //customModal.style.display = "none";
-   customModal.classList.add("hidden");
-  customModal.classList.remove("flex");
+  // customModal.classList.add("hidden");
+ // customModal.classList.remove("flex");
  
 });
 
