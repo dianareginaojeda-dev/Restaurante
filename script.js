@@ -129,7 +129,6 @@ menu.addEventListener("click", function (event) {
   }
 });
 
-menu.addEventListener("click", () => alert("CLIQUE DETECTADO"));
 
 
 cancelCustom.addEventListener("click", () => {
