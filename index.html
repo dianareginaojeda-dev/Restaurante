@@ -274,15 +274,10 @@
           <p class="font-bold">Total: <span id="cart-total">0.00</span></p> 
           <p class="font-bold mt-4"> Informar seu nome </p> 
           <input 
-
           type="text" 
-
           placeholder="Digite seu nome completo" 
-
           id="address" 
-
           class="w-full border-2 p-1 rounded my-1" 
-
           /> 
           <p class="text-red-500 hidden" id="address-warn">Digite seu nome</p> 
 
@@ -312,33 +307,17 @@
           <input 
 
           type="text" 
-
           placeholder="Digite seu Horario..." 
-
           id="addresshorario" 
-
           class="w-full border-2 p-1 rounded my-1" 
-
           /> 
-
           <p class="text-red-500 hidden" id="address-warn-horario">Digite Horario da Retirada</p> 
-
- 
-
           <div class="flex items-center justify-between mt-5 w-full"> 
-
             <button id="close-modal-btn">Fechar</button> 
-
             <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar pedido</button>
-
             <button id="checAvaliacao-btn" class="bg-green-500 text-white px-4 py-1 rounded">Avaliar Cardápio</button> 
-
           </div> 
-
- 
-
         </div> 
-
     </div> 
 
     <!-- FIM MODAL CART--> 
@@ -350,23 +329,14 @@
      <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center"> 
 
        <!--inicio button cart footer--> 
-
       <button 
-
          class="flex items-center gap-2 text-white font-bold" 
-
          id="cart-btn" 
-
          > 
-
           (<span id="cart-count">0</span>) 
-
           Veja meu carrinho 
-
           <i class="fa fa-cart-plus text-lg text-white"></i> 
-
         </button> 
-
      </footer> 
 
      <!--fim button cart footer--> 
@@ -378,6 +348,7 @@
             <p class="font-semibold mb-2">Adicionais:</p> <div id="extras-box" class="grid grid-cols-2 gap-2"></div> <p class="font-semibold mt-4 mb-2">Retirar:</p> <div id="remove-box" class="grid grid-cols-2 gap-2"></div> <textarea id="obs" class="w-full border p-2 rounded mt-4" placeholder="Observações..."></textarea> <div class="flex justify-between items-center mt-4"> <span class="font-bold text-lg">Total: R$ <span id="modal-total">0.00</span></span> <div> <button id="cancel-custom" class="px-4 py-1 border rounded">Cancelar</button> <button id="confirm-custom" class="bg-green-600 text-white px-4 py-1 rounded ml-2">Confirmar</button> </div> </div> </div> </div>
  
      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-     <script src="./script.js"></script> 
+     <script src="./script.js" defer></script>
+ 
 </body>
 </html>
