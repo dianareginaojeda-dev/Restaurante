@@ -1,5 +1,5 @@
 alert("scripts.js carregado");
-const menu = document.getElementById("menu")
+ const menu = document.getElementById("menu")
 const cartBtn = document.getElementById("cart-btn")
 const cartModal = document.getElementById("cart-modal")
 const cartItemConteiner = document.getElementById("cart-items")
@@ -16,80 +16,6 @@ const addresswharn = document.getElementById("address-warn")
 const addresswharnSetor = document.getElementById("address-warn-setor")
 const addresswharnBloco = document.getElementById("address-warn-bloco")
 const addresswharnhorario = document.getElementById("address-warn-horario")
-// MENU OPCIONAL
-const cartItemsContainer = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
-const cartCount = document.getElementById("cart-count");
-const checkoutBtn = document.getElementById("checkout-btn");
-// ===== CARRINHO =====
-const customModal = document.getElementById("custom-modal");
-const extrasBox = document.getElementById("extras-box");
-const removeBox = document.getElementById("remove-box");
-const modalTitle = document.getElementById("modal-title");
-const modalTotal = document.getElementById("modal-total");
-
-let produtoAtual = "";
-let precoBase = 0;
-
-const extrasList = [
-  { name: "Ovo", price: 2 },
-  { name: "Bacon", price: 4 },
-  { name: "Queijo", price: 3 }
-];
-
-const removeList = ["Cebola", "Tomate", "Feijão"];
-
-function abrirModalPersonalizacao() {
-  modalTitle.innerText = produtoAtual;
-
-  extrasBox.innerHTML = "";
-  removeBox.innerHTML = "";
-
-  let total = precoBase;
-
-  extrasList.forEach(extra => {
-    extrasBox.innerHTML += `
-      <label class="flex gap-2 items-center">
-        <input type="checkbox" class="extra-checkbox" data-price="${extra.price}">
-        ${extra.name} (+R$ ${extra.price})
-      </label>`;
-  });
-
-  removeList.forEach(rem => {
-    removeBox.innerHTML += `
-      <label class="flex gap-2 items-center">
-        <input type="checkbox" class="remove-checkbox">
-        Sem ${rem}
-      </label>`;
-  });
-
-  modalTotal.innerText = total.toFixed(2);
-
-  customModal.classList.remove("hidden");
-  customModal.classList.add("flex");
-}
-
-extrasBox.addEventListener("change", () => {
-  let total = precoBase;
-
-  extrasBox.querySelectorAll("input:checked").forEach(el => {
-    total += Number(el.dataset.price);
-  });
-
-  modalTotal.innerText = total.toFixed(2);
-});
-
-document.getElementById("cancel-custom").onclick = () => {
-  customModal.classList.add("hidden");
-};
-
-document.getElementById("confirm-custom").onclick = () => {
-  addToCart(produtoAtual, Number(modalTotal.innerText));
-  customModal.classList.add("hidden");
-};
-
-
-
 
 let cart = []
 // abrir menu carrinho
@@ -99,68 +25,13 @@ cartBtn.addEventListener("click", function(){
 // fechar menu carrinho quando clicar fora 
 cartModal.addEventListener("click", function(event){
     if(event.target === cartModal){
-       cartModal.style.display = "none"
-      //customModal.classList.add("hidden");
-//customModal.classList.remove("flex");
+        cartModal.style.display = "none"
     }
 })
 // fechar menu carrinho quando clicar no botão de fechar
 closeModalBtn.addEventListener("click", function(){
     cartModal.style.display = "none"
- customModal.classList.add("hidden");
-//customModal.classList.remove("flex");
-
 })
-
-// MENU PERSONALIZADO 
-function abrirModalPersonalizacao() {
-  modalTitle.innerText = produtoAtual;
-
-  extrasBox.innerHTML = "";
-  removeBox.innerHTML = "";
-
-  let total = precoBase;
-
-  adicionais.forEach((item) => {
-    const div = document.createElement("div");
-    div.classList.add("flex", "justify-between", "items-center");
-
-    div.innerHTML = `
-      <label class="flex items-center gap-2">
-        <input type="checkbox" class="extra-checkbox" data-name="${item.name}" data-price="${item.price}">
-        ${item.name}
-      </label>
-      <span>R$ ${item.price.toFixed(2)}</span>
-    `;
-
-    extrasBox.appendChild(div);
-  });
-
-  retirar.forEach((item) => {
-    const div = document.createElement("div");
-    div.innerHTML = `
-      <label class="flex items-center gap-2">
-        <input type="checkbox" class="remove-checkbox" data-name="${item}">
-        Sem ${item}
-      </label>
-    `;
-    removeBox.appendChild(div);
-  });
-
-  modalTotal.innerText = total.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  });
-
-  customModal.classList.remove("hidden");
-//customModal.classList.add("hidden");
-//customModal.classList.add("flex");
-
-}
-
-
-
-// MENU
 menu.addEventListener("click", function(event){
     // console.log(event.target)
     let parentButton = event.target.closest(".add-to-cart-btn")
@@ -174,64 +45,6 @@ menu.addEventListener("click", function(event){
     }
     
 })
-
-
-
-
-
-
-
-cancelCustom.addEventListener("click", () => {
- 
-  //customModal.style.display = "none";
-  customModal.classList.add("hidden");
- //customModal.classList.remove("flex");
- 
-});
-
-// ATUALIZAR TOTAL A MARCAR EXTRAS 
-document.addEventListener("change", function (e) {
-  if (e.target.classList.contains("extra-checkbox")) {
-    const price = parseFloat(e.target.dataset.price);
-
-    let total = parseFloat(
-      modalTotal.innerText.replace("R$", "").replace(",", ".")
-    );
-
-    total += e.target.checked ? price : -price;
-
-    modalTotal.innerText = total.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL"
-    });
-  }
-});
-
-// CONFIRMAR ADICIONAR NO CARRINHO
-confirmCustom.addEventListener("click", () => {
-  const extras = [...document.querySelectorAll(".extra-checkbox:checked")]
-    .map(el => el.dataset.name);
-
-  const removidos = [...document.querySelectorAll(".remove-checkbox:checked")]
-    .map(el => `Sem ${el.dataset.name}`);
-
-  const obs = document.getElementById("obs").value;
-
-  let descricao = produtoAtual;
-
-  if (extras.length) descricao += ` + ${extras.join(", ")}`;
-  if (removidos.length) descricao += ` (${removidos.join(", ")})`;
-  if (obs) descricao += ` - Obs: ${obs}`;
-
-  const total = parseFloat(
-    modalTotal.innerText.replace("R$", "").replace(",", ".")
-  );
-
-  addToCart(descricao, total);
-  customModal.classList.add("hidden");
-});
-
-
 //função para adicionar no carrinho
 function addToCart(name, price) {
   const existingItem = cart.find(
@@ -248,10 +61,10 @@ function addToCart(name, price) {
     });
   }
 
-  updateCartModal();
+  updateCartMotal();
 }
 // atualizar o modal do carrinho
-function updateCartModal() {
+function updateCartMotal() {
   cartItemConteiner.innerHTML = "";
   let total = 0;
   cart.forEach(item => {
@@ -301,11 +114,11 @@ function removeItemCart(name){
 
      if(item.quantity > 1){
         item.quantity -= 1;
-        updateCartModal();
+        updateCartMotal();
         return;
     }
       cart.splice(index, 1);
-       updateCartModal();
+       updateCartMotal();
     }}
 // NOME
 addressInput.addEventListener("input", function(event){
@@ -361,15 +174,14 @@ function formatarDataHora() {
 
 function checkRestaurantOpen() {
   const agora = new Date();
-  const hora = agora.getHours();
-  const minuto = agora.getMinutes();
+  const hora = Number(agora.toLocaleString("pt-BR", {
+    timeZone: "America/Campo_Grande",
+    hour: "2-digit",
+    hour12: false
+  }));
 
-  return (
-    (hora > 11 || (hora === 11 && minuto >= 0)) &&
-    (hora < 14 || (hora === 14 && minuto === 0))
-  );
+  return hora >= 8 && hora < 16;
 }
-
 
 checkoutBtn.addEventListener("click", function () {
 
@@ -440,67 +252,9 @@ ${cartItems}
 
   window.open(`https://wa.me/${phone}?text=${mensagem}`, "_blank");
 
-    
-// LIMPEZA FINAL
   cart = [];
   updateCartModal();
-    limparCampos();
-cartModal.classList.add("hidden");
-   // cartModal.style.display = "none";
-    //cartTotal.innerHTML = "0.00";
-//cartItemConteiner.innerHTML = "";
-//document.getElementById("cart-count").innerText = "0";
-
-Toastify({
-    text: "✅ Pedido enviado com sucesso!",
-    duration: 3000,
-    gravity: "top",
-    position: "right",
-    style: { background: "#22c55e" }
-  }).showToast();
-
 });
-
-document.querySelectorAll('.zoom-container').forEach(container => {
-  const img = container.querySelector('img');
-
-  container.addEventListener('mousemove', (e) => {
-    const rect = container.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    img.style.transformOrigin = `${x}% ${y}%`;
-    img.style.transform = 'scale(2)';
-  });
-
-  container.addEventListener('mouseleave', () => {
-    img.style.transformOrigin = 'center center';
-    img.style.transform = 'scale(1)';
-  });
-});
-
-//Limpar resposta enviada no carrinho
-function limparCampos() {
-  addressInput.value = "";
-  addressSetorInput.value = "";
-  addressBlocoInput.value = "";
-  addressHorarioInput.value = "";
-
-  addressInput.classList.remove("border-red-500");
-  addressSetorInput.classList.remove("border-red-500");
-  addressBlocoInput.classList.remove("border-red-500");
-  addressHorarioInput.classList.remove("border-red-500");
-}
-function abrirDireto(btn) {
-  produtoAtual = btn.dataset.name;
-  precoBase = parseFloat(btn.dataset.price);
-
-  console.log("Abrindo modal:", produtoAtual, precoBase);
-
-  customModal.classList.remove("hidden");
-}
-
-document.querySelectorAll("button").forEach(btn => {
-  btn.addEventListener("click", () => alert("clicou"));
-});
-
+   
+    
+    
