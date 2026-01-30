@@ -111,17 +111,16 @@ function abrirModalPersonalizacao() {
 
 
 // MENU
-menu.addEventListener("click", function (e) {
+document.addEventListener("click", function (e) {
   const btn = e.target.closest("button");
-
-  console.log("CLIQUE EM:", e.target);
-  console.log("BOTÃO ENCONTRADO:", btn);
 
   if (!btn) return;
 
   if (btn.classList.contains("open-custom-btn")) {
-    alert("MARMITEX P DETECTADO");
-    customModal.style.display = "flex";
+    produtoAtual = btn.dataset.name;
+    precoBase = parseFloat(btn.dataset.price);
+
+    abrirModalPersonalizacao();
     return;
   }
 
@@ -129,6 +128,7 @@ menu.addEventListener("click", function (e) {
     addToCart(btn.dataset.name, parseFloat(btn.dataset.price));
   }
 });
+
 
 
 
