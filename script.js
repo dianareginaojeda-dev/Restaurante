@@ -63,7 +63,7 @@ cartModal.addEventListener("click", function(event){
 })
 // fechar menu carrinho quando clicar no botão de fechar
 closeModalBtn.addEventListener("click", function(){
-   // cartModal.style.display = "none"
+    cartModal.style.display = "none"
  customModal.classList.add("hidden");
 //customModal.classList.remove("flex");
 
@@ -120,14 +120,17 @@ function abrirModalPersonalizacao() {
 // MENU
 menu.addEventListener("click", function (e) {
   const btn = e.target.closest(".open-custom-btn");
-
   if (!btn) return;
+
+  console.log("Produto:", btn.dataset.name);
+  console.log("Preço:", btn.dataset.price);
 
   produtoAtual = btn.dataset.name;
   precoBase = parseFloat(btn.dataset.price);
 
   abrirModalPersonalizacao();
 });
+
 
 
 
