@@ -108,8 +108,8 @@ function abrirModalPersonalizacao() {
     currency: "BRL"
   });
 
-  //customModal.classList.remove("hidden");
   customModal.classList.remove("hidden");
+  //customModal.classList.remove("hidden");
 customModal.classList.add("flex");
 
 }
@@ -117,22 +117,15 @@ customModal.classList.add("flex");
 
 
 // MENU
-document.addEventListener("click", function (e) {
-  const btn = e.target.closest("button");
+menu.addEventListener("click", function (e) {
+  const btn = e.target.closest(".open-custom-btn");
 
   if (!btn) return;
 
-  if (btn.classList.contains("open-custom-btn")) {
-    produtoAtual = btn.dataset.name;
-    precoBase = parseFloat(btn.dataset.price);
+  produtoAtual = btn.dataset.name;
+  precoBase = parseFloat(btn.dataset.price);
 
-    abrirModalPersonalizacao();
-    return;
-  }
-
-  if (btn.classList.contains("add-to-cart-btn")) {
-    addToCart(btn.dataset.name, parseFloat(btn.dataset.price));
-  }
+  abrirModalPersonalizacao();
 });
 
 
@@ -140,8 +133,10 @@ document.addEventListener("click", function (e) {
 
 
 cancelCustom.addEventListener("click", () => {
-  //customModal.classList.add("hidden");
-  customModal.style.display = "none";
+ 
+  //customModal.style.display = "none";
+   customModal.classList.add("hidden");
+  customModal.classList.remove("flex");
  
 });
 
