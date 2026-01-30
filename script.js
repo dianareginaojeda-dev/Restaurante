@@ -121,7 +121,9 @@ menu.addEventListener("click", function (e) {
 
   if (btn.classList.contains("open-custom-btn")) {
     alert("MARMITEX P DETECTADO");
-    customModal.classList.remove("hidden");
+ // customModal.classList.remove("hidden");
+    customModal.style.display = "flex";
+
     return;
   }
 
@@ -134,7 +136,8 @@ menu.addEventListener("click", function (e) {
 
 
 cancelCustom.addEventListener("click", () => {
-  customModal.classList.add("hidden");
+  //customModal.classList.add("hidden");
+  customModal.style.display = "none";
 });
 
 // ATUALIZAR TOTAL A MARCAR EXTRAS 
