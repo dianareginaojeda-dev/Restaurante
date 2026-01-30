@@ -63,6 +63,51 @@ closeModalBtn.addEventListener("click", function(){
     cartModal.style.display = "none"
 })
 
+// MENU PERSONALIZADO 
+function abrirModalPersonalizacao() {
+  modalTitle.innerText = produtoAtual;
+
+  extrasBox.innerHTML = "";
+  removeBox.innerHTML = "";
+
+  let total = precoBase;
+
+  adicionais.forEach((item) => {
+    const div = document.createElement("div");
+    div.classList.add("flex", "justify-between", "items-center");
+
+    div.innerHTML = `
+      <label class="flex items-center gap-2">
+        <input type="checkbox" class="extra-checkbox" data-name="${item.name}" data-price="${item.price}">
+        ${item.name}
+      </label>
+      <span>R$ ${item.price.toFixed(2)}</span>
+    `;
+
+    extrasBox.appendChild(div);
+  });
+
+  retirar.forEach((item) => {
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <label class="flex items-center gap-2">
+        <input type="checkbox" class="remove-checkbox" data-name="${item}">
+        Sem ${item}
+      </label>
+    `;
+    removeBox.appendChild(div);
+  });
+
+  modalTotal.innerText = total.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+
+  customModal.classList.remove("hidden");
+}
+
+
+
 // MENU
 menu.addEventListener("click", function(event) {
 
@@ -89,6 +134,51 @@ menu.addEventListener("click", function(event) {
 
 });
 
+cancelCustom.addEventListener("click", () => {
+  customModal.classList.add("hidden");
+});
+
+// ATUALIZAR TOTAL A MARCAR EXTRAS 
+document.addEventListener("change", function (e) {
+  if (e.target.classList.contains("extra-checkbox")) {
+    const price = parseFloat(e.target.dataset.price);
+
+    let total = parseFloat(
+      modalTotal.innerText.replace("R$", "").replace(",", ".")
+    );
+
+    total += e.target.checked ? price : -price;
+
+    modalTotal.innerText = total.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    });
+  }
+});
+
+// CONFIRMAR ADICIONAR NO CARRINHO
+confirmCustom.addEventListener("click", () => {
+  const extras = [...document.querySelectorAll(".extra-checkbox:checked")]
+    .map(el => el.dataset.name);
+
+  const removidos = [...document.querySelectorAll(".remove-checkbox:checked")]
+    .map(el => `Sem ${el.dataset.name}`);
+
+  const obs = document.getElementById("obs").value;
+
+  let descricao = produtoAtual;
+
+  if (extras.length) descricao += ` + ${extras.join(", ")}`;
+  if (removidos.length) descricao += ` (${removidos.join(", ")})`;
+  if (obs) descricao += ` - Obs: ${obs}`;
+
+  const total = parseFloat(
+    modalTotal.innerText.replace("R$", "").replace(",", ".")
+  );
+
+  addToCart(descricao, total);
+  customModal.classList.add("hidden");
+});
 
 
 //função para adicionar no carrinho
