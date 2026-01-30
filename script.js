@@ -118,45 +118,19 @@ function abrirModalPersonalizacao() {
 
 
 // MENU
-document.addEventListener("DOMContentLoaded", function () {
+menu.addEventListener("click", function(event){
+    // console.log(event.target)
+    let parentButton = event.target.closest(".add-to-cart-btn")
 
-  console.log("JS NOVO CARREGADO");
+    if(parentButton){
+    const name = parentButton.getAttribute("data-name")
+    const price = parseFloat(parentButton.getAttribute("data-price"))
 
-  const menu = document.getElementById("menu");
-  const customModal = document.getElementById("custom-modal");
-
-  console.log("MENU:", menu);
-  console.log("MODAL:", customModal);
-
-  if (!menu || !customModal) return;
-
-  menu.addEventListener("click", function (e) {
-
-    const btnCustom = e.target.closest(".open-custom-btn");
-    const btnAdd = e.target.closest(".add-to-cart-btn");
-
-    if (btnCustom) {
-      console.log("MARMITEX DETECTADO");
-
-      produtoAtual = btnCustom.dataset.name;
-      precoBase = parseFloat(btnCustom.dataset.price);
-
-      abrirModalPersonalizacao();
-      return;
+    //adicionar no carrinho
+    addToCart(name, price)
     }
-
-    if (btnAdd) {
-      console.log("ADD DIRETO");
-
-      const name = btnAdd.dataset.name;
-      const price = parseFloat(btnAdd.dataset.price);
-
-      addToCart(name, price);
-    }
-
-  });
-
-});
+    
+})
 
 
 
