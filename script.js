@@ -56,7 +56,9 @@ cartBtn.addEventListener("click", function(){
 // fechar menu carrinho quando clicar fora 
 cartModal.addEventListener("click", function(event){
     if(event.target === cartModal){
-        cartModal.style.display = "none"
+       // cartModal.style.display = "none"
+      customModal.classList.add("hidden");
+customModal.classList.remove("flex");
     }
 })
 // fechar menu carrinho quando clicar no botão de fechar
