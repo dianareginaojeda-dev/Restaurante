@@ -57,8 +57,8 @@ cartBtn.addEventListener("click", function(){
 cartModal.addEventListener("click", function(event){
     if(event.target === cartModal){
        cartModal.style.display = "none"
-      customModal.classList.add("hidden");
-customModal.classList.remove("flex");
+      //customModal.classList.add("hidden");
+//customModal.classList.remove("flex");
     }
 })
 // fechar menu carrinho quando clicar no botão de fechar
@@ -110,7 +110,7 @@ function abrirModalPersonalizacao() {
   });
 
   customModal.classList.remove("hidden");
-customModal.classList.add("hidden");
+//customModal.classList.add("hidden");
 //customModal.classList.add("flex");
 
 }
@@ -135,7 +135,7 @@ menu.addEventListener("click", function (e) {
 
 cancelCustom.addEventListener("click", () => {
  
-  //customModal.style.display = "none";
+  customModal.style.display = "none";
   // customModal.classList.add("hidden");
  // customModal.classList.remove("flex");
  
