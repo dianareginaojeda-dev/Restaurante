@@ -110,8 +110,8 @@ function abrirModalPersonalizacao() {
   });
 
   customModal.classList.remove("hidden");
-  //customModal.classList.remove("hidden");
-customModal.classList.add("flex");
+customModal.classList.add("hidden");
+//customModal.classList.add("flex");
 
 }
 
